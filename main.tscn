@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpag2kjscpvig" path="res://player.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dhjyofxc2sa1p" path="res://Player.jpg" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://cm4k23xh0511v" path="res://object.jpg" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cm4k23xh0511v" path="res://Coin.jpg" id="3_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miocd"]
 
@@ -25,6 +25,20 @@ texture = ExtResource("2_0xm2m")
 scale = Vector2(7, 7)
 shape = SubResource("RectangleShape2D_miocd")
 
+[node name="ReceiveBox" type="Area2D" parent="Player" unique_id=1576076768]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/ReceiveBox" unique_id=1860832611]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_miocd")
+
+[node name="DealBox" type="Area2D" parent="Player" unique_id=1979614535]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/DealBox" unique_id=542570922]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_miocd")
+
 [node name="Coin" type="Area2D" parent="." unique_id=1339180829 groups=["coin"]]
 position = Vector2(199, 200)
 
@@ -37,3 +51,5 @@ scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_s5l70")
 
 [connection signal="area_entered" from="Player/PickBox" to="Player" method="_on_pick_box_area_entered"]
+[connection signal="area_entered" from="Player/ReceiveBox" to="Player" method="_on_pick_box_area_entered"]
+[connection signal="area_entered" from="Player/DealBox" to="Player" method="_on_pick_box_area_entered"]
