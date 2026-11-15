@@ -3,14 +3,36 @@
 [ext_resource type="Script" uid="uid://dpag2kjscpvig" path="res://player.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cv4ydcorn2o5f" path="res://Basket.png" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cg7fa4assde66" path="res://Bg.jpg" id="1_7mycd"]
-[ext_resource type="Texture2D" uid="uid://dhjyofxc2sa1p" path="res://Player.idle.jpg" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://da1mlifcl70kh" path="res://Coin.tscn" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://ckmtjw2ojyfe3" path="res://PatoDown.png" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://c1gf0aci5wk48" path="res://PatoIdle.png" id="6_5vw27"]
+[ext_resource type="Texture2D" uid="uid://bgug2i6a47fm2" path="res://PatoUp.png" id="7_kek77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw8a7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bw8a7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bw8a7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_272bh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5vw27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kek77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5vw27")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miocd"]
 
@@ -54,6 +76,7 @@ position = Vector2(497, 53)
 position = Vector2(627, 300)
 
 [node name="Basket" type="Area2D" parent="." unique_id=25686527 groups=["basket"]]
+visible = false
 position = Vector2(75, 75)
 
 [node name="Sprite2D" type="Sprite2D" parent="Basket" unique_id=1398238635]
@@ -65,7 +88,7 @@ scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_bw8a7")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=176937556]
-position = Vector2(151, 217)
+position = Vector2(50, 580)
 collision_mask = 2
 script = ExtResource("1_0xm2m")
 
@@ -73,16 +96,9 @@ script = ExtResource("1_0xm2m")
 scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_7mycd")
 
-[node name="Idle" type="Sprite2D" parent="Player" unique_id=469844967]
-position = Vector2(1, 0)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_0xm2m")
-
-[node name="Up" type="Sprite2D" parent="Player" unique_id=1232453931]
-visible = false
-
-[node name="Down" type="Sprite2D" parent="Player" unique_id=1030478587]
-visible = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=817553712]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_bw8a7")
 
 [node name="PickBox" type="Area2D" parent="Player" unique_id=919944038]
 
