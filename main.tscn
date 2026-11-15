@@ -2,15 +2,47 @@
 
 [ext_resource type="Script" uid="uid://dpag2kjscpvig" path="res://player.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cv4ydcorn2o5f" path="res://Basket.png" id="1_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://dhjyofxc2sa1p" path="res://Player.jpg" id="2_0xm2m"]
-[ext_resource type="Texture2D" uid="uid://cm4k23xh0511v" path="res://Coin.jpg" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cg7fa4assde66" path="res://Bg.jpg" id="1_7mycd"]
+[ext_resource type="Texture2D" uid="uid://dhjyofxc2sa1p" path="res://Player.idle.jpg" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://da1mlifcl70kh" path="res://Coin.tscn" id="4_1bvp3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw8a7"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_bw8a7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miocd"]
 
 [node name="Node2D" type="Node2D" unique_id=448943906]
+
+[node name="Bg" type="StaticBody2D" parent="." unique_id=25805088]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bg" unique_id=665772922]
+position = Vector2(2000, -10)
+scale = Vector2(1000, 1)
+shape = SubResource("RectangleShape2D_bw8a7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bg" unique_id=1371878118]
+position = Vector2(-10, -10)
+scale = Vector2(1, 1000)
+shape = SubResource("RectangleShape2D_bw8a7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bg" unique_id=1716402763]
+position = Vector2(1160, -10)
+scale = Vector2(1, 1000)
+shape = SubResource("RectangleShape2D_bw8a7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bg" unique_id=2006518314]
+position = Vector2(1160.0001, 658)
+scale = Vector2(1000, 1)
+shape = SubResource("RectangleShape2D_bw8a7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bg" unique_id=168783815]
+position = Vector2(580, 285.00003)
+scale = Vector2(3.7, 3.7)
+texture = ExtResource("1_7mycd")
 
 [node name="Coin" parent="." unique_id=1063425572 instance=ExtResource("4_1bvp3")]
 position = Vector2(246, 216)
@@ -33,19 +65,24 @@ scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_bw8a7")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=176937556]
-position = Vector2(75, 75)
+position = Vector2(151, 217)
+collision_mask = 2
 script = ExtResource("1_0xm2m")
+
+[node name="HitBox" type="CollisionShape2D" parent="Player" unique_id=1214326634]
+scale = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_7mycd")
 
 [node name="Idle" type="Sprite2D" parent="Player" unique_id=469844967]
 position = Vector2(1, 0)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_0xm2m")
 
-[node name="HoldCoin" type="Sprite2D" parent="Player" unique_id=55154013]
+[node name="Up" type="Sprite2D" parent="Player" unique_id=1232453931]
 visible = false
-position = Vector2(-15, 15)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_h2yge")
+
+[node name="Down" type="Sprite2D" parent="Player" unique_id=1030478587]
+visible = false
 
 [node name="PickBox" type="Area2D" parent="Player" unique_id=919944038]
 
