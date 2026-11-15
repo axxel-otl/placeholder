@@ -1,45 +1,20 @@
 [gd_scene format=3 uid="uid://dqh1tbmjjymgj"]
 
-[ext_resource type="Script" uid="uid://dpag2kjscpvig" path="res://player.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cv4ydcorn2o5f" path="res://Basket.png" id="1_1bvp3"]
 [ext_resource type="Script" uid="uid://cfi1gnim2ydwn" path="res://Global.gd" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cg7fa4assde66" path="res://Bg.jpg" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://da1mlifcl70kh" path="res://Coin.tscn" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://cj2bwguvho8h7" path="res://basket.gd" id="4_efxa6"]
-[ext_resource type="Texture2D" uid="uid://ckmtjw2ojyfe3" path="res://PatoDown.png" id="5_272bh"]
-[ext_resource type="Texture2D" uid="uid://c1gf0aci5wk48" path="res://PatoIdle.png" id="6_5vw27"]
-[ext_resource type="Texture2D" uid="uid://bgug2i6a47fm2" path="res://PatoUp.png" id="7_kek77"]
+[ext_resource type="PackedScene" uid="uid://sxeh5qou6d6d" path="res://Player.tscn" id="6_efxa6"]
 [ext_resource type="AudioStream" uid="uid://dnwusos5kwalk" path="res://MainTheme.wav" id="8_5vw27"]
 [ext_resource type="Script" uid="uid://qawlblv0plti" path="res://BeeBop.gd" id="9_kek77"]
 [ext_resource type="Script" uid="uid://cju5qgd00rsuv" path="res://1Punto.gd" id="12_dg77c"]
+[ext_resource type="PackedScene" uid="uid://dfu8lrmnni6mr" path="res://BigPlatform.tscn" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://c5epnivaaa8lg" path="res://SmolPlatform.tscn" id="14_w48qg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw8a7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bw8a7"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bw8a7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_272bh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_5vw27")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_kek77")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_5vw27")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 4.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_miocd"]
 
 [node name="Node2D" type="Node2D" unique_id=448943906]
 script = ExtResource("1_4c57u")
@@ -73,34 +48,34 @@ scale = Vector2(3.7, 3.7)
 texture = ExtResource("1_7mycd")
 
 [node name="Coin" parent="." unique_id=1063425572 instance=ExtResource("4_1bvp3")]
-position = Vector2(567, 344)
+position = Vector2(160, 425)
 
 [node name="Coin2" parent="." unique_id=688302627 instance=ExtResource("4_1bvp3")]
-position = Vector2(637, 607)
+position = Vector2(342, 417)
 
 [node name="Coin3" parent="." unique_id=2103575640 instance=ExtResource("4_1bvp3")]
-position = Vector2(677, 343)
+position = Vector2(479, 265)
 
 [node name="Coin4" parent="." unique_id=326939582 instance=ExtResource("4_1bvp3")]
-position = Vector2(749, 612)
+position = Vector2(641, 266)
 
 [node name="Coin5" parent="." unique_id=193714215 instance=ExtResource("4_1bvp3")]
-position = Vector2(797, 332)
+position = Vector2(861, 111)
 
 [node name="Coin6" parent="." unique_id=1794657655 instance=ExtResource("4_1bvp3")]
-position = Vector2(856, 619)
+position = Vector2(1017, 110)
 
 [node name="Coin7" parent="." unique_id=712061312 instance=ExtResource("4_1bvp3")]
-position = Vector2(919, 325)
+position = Vector2(257, 421)
 
 [node name="Coin8" parent="." unique_id=1515852796 instance=ExtResource("4_1bvp3")]
-position = Vector2(994, 622)
+position = Vector2(562, 263)
 
 [node name="Coin9" parent="." unique_id=1578220961 instance=ExtResource("4_1bvp3")]
-position = Vector2(1047, 318)
+position = Vector2(948, 117)
 
 [node name="Coin10" parent="." unique_id=469737519 instance=ExtResource("4_1bvp3")]
-position = Vector2(1133, 623)
+position = Vector2(75, 56)
 
 [node name="Basket" type="Area2D" parent="." unique_id=25686527 groups=["basket"]]
 position = Vector2(55, 598)
@@ -114,47 +89,8 @@ texture = ExtResource("1_1bvp3")
 scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_bw8a7")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=176937556]
+[node name="Player" parent="." unique_id=184967046 instance=ExtResource("6_efxa6")]
 position = Vector2(50, 580)
-collision_mask = 2
-script = ExtResource("1_0xm2m")
-
-[node name="HitBox" type="CollisionShape2D" parent="Player" unique_id=1214326634]
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_7mycd")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=817553712]
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_bw8a7")
-
-[node name="PickBox" type="Area2D" parent="Player" unique_id=919944038]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickBox" unique_id=854777857]
-scale = Vector2(7, 7)
-shape = SubResource("RectangleShape2D_miocd")
-
-[node name="ReceiveBox" type="Area2D" parent="Player" unique_id=1576076768]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/ReceiveBox" unique_id=1860832611]
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_miocd")
-
-[node name="DealBox" type="Area2D" parent="Player" unique_id=1979614535]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/DealBox" unique_id=542570922]
-scale = Vector2(5, 5)
-shape = SubResource("RectangleShape2D_miocd")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=486983882]
-
-[node name="CoinCountDisplay" type="Label" parent="Player/CanvasLayer" unique_id=564742699]
-offset_left = 1082.0
-offset_top = 10.0
-offset_right = 1143.0
-offset_bottom = 33.0
-text = "Coins: 0"
 
 [node name="BeeBop" type="AudioStreamPlayer2D" parent="." unique_id=72544112]
 stream = ExtResource("8_5vw27")
@@ -163,12 +99,21 @@ script = ExtResource("9_kek77")
 [node name="1Punto" type="AudioStreamPlayer2D" parent="." unique_id=876765325]
 script = ExtResource("12_dg77c")
 
+[node name="Platform1" parent="." unique_id=744499742 instance=ExtResource("13_ycdy4")]
+position = Vector2(250, 484)
+
+[node name="Platform2" parent="." unique_id=1551965203 instance=ExtResource("13_ycdy4")]
+position = Vector2(570, 334)
+
+[node name="Platform3" parent="." unique_id=2087344664 instance=ExtResource("13_ycdy4")]
+position = Vector2(944, 183)
+
+[node name="Node2D" parent="." unique_id=1237619460 instance=ExtResource("14_w48qg")]
+position = Vector2(72, 135)
+
 [connection signal="BeeBop" from="." to="BeeBop" method="_on_node_2d_bee_bop"]
 [connection signal="UnPunto" from="." to="1Punto" method="_on_node_2d_un_punto"]
 [connection signal="EnoughCoins" from="Player" to="Basket" method="_onEnoughCoins"]
 [connection signal="Won" from="Player" to="." method="_onWin"]
-[connection signal="area_entered" from="Player/PickBox" to="Player" method="_on_pick_box_area_entered"]
-[connection signal="area_entered" from="Player/ReceiveBox" to="Player" method="_on_pick_box_area_entered"]
-[connection signal="area_entered" from="Player/DealBox" to="Player" method="_on_pick_box_area_entered"]
 [connection signal="finished" from="BeeBop" to="BeeBop" method="_on_finished"]
 [connection signal="finished" from="1Punto" to="1Punto" method="_on_finished"]
