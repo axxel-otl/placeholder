@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://c1gf0aci5wk48" path="res://PatoIdle.png" id="6_5vw27"]
 [ext_resource type="Texture2D" uid="uid://bgug2i6a47fm2" path="res://PatoUp.png" id="7_kek77"]
 [ext_resource type="AudioStream" uid="uid://dnwusos5kwalk" path="res://MainTheme.wav" id="8_5vw27"]
-[ext_resource type="Script" uid="uid://qawlblv0plti" path="res://audio_stream_player_2d.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://qawlblv0plti" path="res://BeeBop.gd" id="9_kek77"]
+[ext_resource type="Script" uid="uid://cju5qgd00rsuv" path="res://1Punto.gd" id="12_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bw8a7"]
 
@@ -155,14 +156,19 @@ offset_right = 1143.0
 offset_bottom = 33.0
 text = "Coins: 0"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=72544112]
+[node name="BeeBop" type="AudioStreamPlayer2D" parent="." unique_id=72544112]
 stream = ExtResource("8_5vw27")
-autoplay = true
 script = ExtResource("9_kek77")
 
+[node name="1Punto" type="AudioStreamPlayer2D" parent="." unique_id=876765325]
+script = ExtResource("12_dg77c")
+
+[connection signal="BeeBop" from="." to="BeeBop" method="_on_node_2d_bee_bop"]
+[connection signal="UnPunto" from="." to="1Punto" method="_on_node_2d_un_punto"]
 [connection signal="EnoughCoins" from="Player" to="Basket" method="_onEnoughCoins"]
 [connection signal="Won" from="Player" to="." method="_onWin"]
 [connection signal="area_entered" from="Player/PickBox" to="Player" method="_on_pick_box_area_entered"]
 [connection signal="area_entered" from="Player/ReceiveBox" to="Player" method="_on_pick_box_area_entered"]
 [connection signal="area_entered" from="Player/DealBox" to="Player" method="_on_pick_box_area_entered"]
-[connection signal="finished" from="AudioStreamPlayer2D" to="AudioStreamPlayer2D" method="_on_finished"]
+[connection signal="finished" from="BeeBop" to="BeeBop" method="_on_finished"]
+[connection signal="finished" from="1Punto" to="1Punto" method="_on_finished"]

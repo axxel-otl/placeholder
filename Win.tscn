@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://7gd4k0wg6sok"]
+
+[ext_resource type="Script" uid="uid://b7kukfsl86wtx" path="res://Win.gd" id="1_co8qc"]
+[ext_resource type="Texture2D" uid="uid://cr0e8xyhtwmfs" path="res://PatoPiernado.png" id="2_ijtj1"]
+[ext_resource type="Script" uid="uid://cnvi6hvkoromw" path="res://label.gd" id="2_j64cp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_co8qc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ijtj1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=701288138]
+script = ExtResource("1_co8qc")
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=1229186569]
+
+[node name="PatoPiernado" type="AnimatedSprite2D" parent="." unique_id=948853462]
+position = Vector2(576, 408.00015)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_co8qc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=519225220]
+
+[node name="TimeDisplay" type="Label" parent="CanvasLayer" unique_id=1509615811]
+offset_left = 561.0
+offset_top = 198.0
+offset_right = 601.0
+offset_bottom = 221.0
+script = ExtResource("2_j64cp")
