@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dpag2kjscpvig" path="res://player.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://cv4ydcorn2o5f" path="res://Basket.png" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://cfi1gnim2ydwn" path="res://Global.gd" id="1_4c57u"]
 [ext_resource type="Texture2D" uid="uid://cg7fa4assde66" path="res://Bg.jpg" id="1_7mycd"]
 [ext_resource type="PackedScene" uid="uid://da1mlifcl70kh" path="res://Coin.tscn" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://cj2bwguvho8h7" path="res://basket.gd" id="4_efxa6"]
 [ext_resource type="Texture2D" uid="uid://ckmtjw2ojyfe3" path="res://PatoDown.png" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://c1gf0aci5wk48" path="res://PatoIdle.png" id="6_5vw27"]
 [ext_resource type="Texture2D" uid="uid://bgug2i6a47fm2" path="res://PatoUp.png" id="7_kek77"]
@@ -39,6 +41,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miocd"]
 
 [node name="Node2D" type="Node2D" unique_id=448943906]
+script = ExtResource("1_4c57u")
 
 [node name="Bg" type="StaticBody2D" parent="." unique_id=25805088]
 collision_layer = 2
@@ -69,17 +72,38 @@ scale = Vector2(3.7, 3.7)
 texture = ExtResource("1_7mycd")
 
 [node name="Coin" parent="." unique_id=1063425572 instance=ExtResource("4_1bvp3")]
-position = Vector2(246, 216)
+position = Vector2(567, 344)
 
 [node name="Coin2" parent="." unique_id=688302627 instance=ExtResource("4_1bvp3")]
-position = Vector2(497, 53)
+position = Vector2(637, 607)
 
 [node name="Coin3" parent="." unique_id=2103575640 instance=ExtResource("4_1bvp3")]
-position = Vector2(627, 300)
+position = Vector2(677, 343)
+
+[node name="Coin4" parent="." unique_id=326939582 instance=ExtResource("4_1bvp3")]
+position = Vector2(749, 612)
+
+[node name="Coin5" parent="." unique_id=193714215 instance=ExtResource("4_1bvp3")]
+position = Vector2(797, 332)
+
+[node name="Coin6" parent="." unique_id=1794657655 instance=ExtResource("4_1bvp3")]
+position = Vector2(856, 619)
+
+[node name="Coin7" parent="." unique_id=712061312 instance=ExtResource("4_1bvp3")]
+position = Vector2(919, 325)
+
+[node name="Coin8" parent="." unique_id=1515852796 instance=ExtResource("4_1bvp3")]
+position = Vector2(994, 622)
+
+[node name="Coin9" parent="." unique_id=1578220961 instance=ExtResource("4_1bvp3")]
+position = Vector2(1047, 318)
+
+[node name="Coin10" parent="." unique_id=469737519 instance=ExtResource("4_1bvp3")]
+position = Vector2(1133, 623)
 
 [node name="Basket" type="Area2D" parent="." unique_id=25686527 groups=["basket"]]
-visible = false
-position = Vector2(75, 75)
+position = Vector2(55, 598)
+script = ExtResource("4_efxa6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Basket" unique_id=1398238635]
 scale = Vector2(0.4, 0.4)
@@ -136,6 +160,8 @@ stream = ExtResource("8_5vw27")
 autoplay = true
 script = ExtResource("9_kek77")
 
+[connection signal="EnoughCoins" from="Player" to="Basket" method="_onEnoughCoins"]
+[connection signal="Won" from="Player" to="." method="_onWin"]
 [connection signal="area_entered" from="Player/PickBox" to="Player" method="_on_pick_box_area_entered"]
 [connection signal="area_entered" from="Player/ReceiveBox" to="Player" method="_on_pick_box_area_entered"]
 [connection signal="area_entered" from="Player/DealBox" to="Player" method="_on_pick_box_area_entered"]

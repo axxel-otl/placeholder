@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-var CollectedCoins = 0
+signal Won
+signal EnoughCoins
+var enoughEmitted = false
 
 func _ready() -> void:
-	CollectedCoins = 0
 	$CanvasLayer/CoinCountDisplay.text = "Coins: 0"
 	$AnimatedSprite2D.sprite_frames.set_animation_loop("default", true)
 	$AnimatedSprite2D.play("default")
@@ -32,5 +33,10 @@ func _physics_process(delta: float) -> void:
 func _on_pick_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("coin"):
 		area.queue_free()
-		CollectedCoins += 1
-		$CanvasLayer/CoinCountDisplay.text = "Coins: " + str(CollectedCoins)
+		Global.collectedCoins += 1
+		$CanvasLayer/CoinCountDisplay.text = "Coins: " + str(Global.collectedCoins)
+		if Global.collectedCoins >= 10 and enoughEmitted == false:
+			EnoughCoins.emit()
+			enoughEmitted = true
+	if area.is_in_group("basket") and Global.collectedCoins >= 10:
+		Won.emit()
